@@ -1,0 +1,342 @@
+%%% A template to produce a nice-looking Curriculum Vitae.
+%%% Kieran Healy <kjhealy@gmail.com>
+%%% Most recent version is at http://kjhealy.github.com/kjh-vita
+%%%
+%%% ------------------------------------------------------------------------
+%%% Requirements that are included in a modern tex distribution:
+%%% ------------------------------------------------------------------------
+%%% xelatex
+%%% fontspec.sty
+%%% hyperrref.sty
+%%% xunicode.sty
+%%% color.sty
+%%% url.sty
+%%% fancyhdr.sty
+%%% memoir.cls
+%%% fontawesome.sty
+%%%
+%%% 
+%%% 
+%%% ------------------------------------------------------------------------
+%%% Requirements from https://github.com/kjhealy/latex-custom-kjh
+%%% ------------------------------------------------------------------------
+%%% org-preamble-xelatex.sty
+%%% memoir-article-styles.sty
+%%%
+%%% ------------------------------------------------------------------------
+%%% Optional
+%%% ------------------------------------------------------------------------
+%%% git
+%%% vc.sty
+%%% revnum.sty
+%%% Fonts
+%%%
+%%% ------------------------------------------------------------------------
+%%% Note
+%%%------------------------------------------------------------------------
+%%% Because this is a hand-tweaked file, be on the look out for \medksip, 
+%%% \bigskip and \newpage commands here and there, which are used to balance
+%%% the layout or avoid widows & orphans, etc. You should of course add or 
+%%% remove these as needed.
+%%%------------------------------------------------------------------------
+
+\documentclass[11.5pt,article,oneside]{memoir}   
+\usepackage{org-preamble-xelatex} 
+\usepackage{fontawesome,url}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{xcolor}
+%%% \usepackage{etbb} for EtBembo font with small caps but didn't find
+%%% etbb.sty file so just downloaded the font.
+
+
+%%%------------------------------------------------------------------------
+%%% Metadata
+%%%------------------------------------------------------------------------
+
+%% Change as needed. Or just add me as a coauthor. Only some of these are 
+%% used below in the hyperref declaration and address banner section.
+\def\myauthor{JP Monteagudo}
+\def\mytitle{Vita}
+\def\mycopyright{\myauthor}
+\def\mykeywords{}
+\def\mybibliostyle{plain}
+\def\mybibliocommand{}
+\def\mysubtitle{}
+\def\myaffiliation{Liberty University}
+\def\myaddress{Health Sciences Department}
+\def\myemail{jpmonteagudo@liberty.edu}
+\def\myweb{http://www.jpmonteagudo.com}
+\def\myphone{(434) 582-7693}
+\def\mytwitter{@jpPabl0}
+\def\mygithub{@jpmonteagudo28}
+\def\myversion{}
+\def\myrevision{}
+
+
+\def\myaffiliation{Liberty University}
+\def\myauthor{JP Monteagudo}
+\date{} % not used (revision control instead)
+\def\mykeywords{JP, Monteagudo, JP Monteagudo, Vita, CV, Resume, Epidemiology}
+
+%%%------------------------------------------------------------------------  
+%%% Git version tracking 
+%%%------------------------------------------------------------------------
+
+%% If you don't use git or the vc package (from CTAN), comment this out.
+%% If you comment it out, be sure to remove the \rfoot comment below, too.
+%input{vc}
+
+%%%------------------------------------------------------------------------
+%%% Document
+%%%------------------------------------------------------------------------
+\begin{document}
+
+%% Choose fonts for use with xelatex
+%% Minion and Myriad are widely available, from Adobe. 
+%% Pragmata is available to buy at http://www.fsd.it/fonts/pragma.htm
+%% and is worth every penny. Any good monospace font will work fine, though.
+%% Consolas or inconsolata are good alternatives.
+% 
+% commented by Karol Kozioł
+% \setromanfont[Mapping={tex-text}, 
+% 	Numbers={OldStyle},
+% 	Ligatures={Common}]{Minion Pro}
+% \setsansfont[Mapping=tex-text,
+% 	Ligatures={Common}, 
+% 	Colour=AA0000]{Unit-Medium}
+% \setmonofont[Mapping=tex-text,Scale=0.72]{PragmataPro} 
+
+% \newfontface\scheader[SmallCapsFont={Minion Pro},SmallCapsFeatures={Letters=SmallCaps}]{Minion Pro}
+
+% \newfontface\addressblock[Mapping={tex-text}, 
+% 	Numbers={OldStyle},
+% 	Ligatures={Common}]{Minion Pro Medium Caption}
+% 
+
+% added by Karol Kozioł to fit ShareLaTeX
+\setromanfont[
+Mapping={tex-text}, 
+Numbers={OldStyle},
+Ligatures={Common},
+BoldFont=ETbb-Bold.otf,
+ItalicFont=ETbb-Italic.otf,
+BoldItalicFont=ETbb-BoldItalic.otf
+]{ETbb-Regular.otf}
+
+\setsansfont[
+Mapping=tex-text,
+Ligatures={Common}, 
+Colour=AA0000,
+BoldFont=IBMPlexSans-Bold.ttf,
+ItalicFont=IBMPlexSans-MediumItalic.ttf,
+BoldItalicFont=IBMPlexSans-BoldItalic.ttf
+]{IBMPlexSans-Bold.ttf}
+	
+\setmonofont[Mapping=tex-text,Scale=0.72]{FiraMono-Bold.ttf} 
+
+\newfontface\scheader[SmallCapsFont={ETbb-Bold.otf},SmallCapsFeatures={Letters=SmallCaps}]{ETbb-Bold.otf}
+
+\newfontface\addressblock[Mapping={tex-text}, 
+	Numbers={OldStyle},
+	Ligatures={Common}]{FiraMono-Regular.ttf}
+
+
+%%%------------------------------------------------------------------------
+%%% Local commands
+%%%------------------------------------------------------------------------
+
+%% Marginal header
+%% Note: as the document goes on you may need to introduce a (gradually increasing)
+%% \vspace element to keep the marginal header pleasingly aligned with the first 
+%% item in the body text. Like this: \marginhead{{\vskip 0.4em}Grants}, or 
+%% \marginhead{{\vskip 0.8em}Service}. Experiment as needed.
+\newcommand{\marginhead}[1]{\marginpar{\textsf{{\footnotesize\vspace{-1em}\flushright #1}}}}
+
+
+%% [optional] custom ampersand (font consistent with the one chosen above)
+% \newcommand{\amper}{{\fontspec[Scale=.95,Colour=AA0000]{Minion Pro Medium}\selectfont\&\,}}
+
+%% No bullets on labels
+\renewcommand{\labelitemi}{~} 
+
+%% Custom hanging indent for vita items
+\def\ind{\hangindent=1 true cm\hangafter=1 \noindent}
+%\def\ind{\hangindent=18pt\hangafter=1 \noindent}
+\def\labelitemi{~}
+\renewcommand{\labelitemii}{~}
+
+%%%------------------------------------------------------------------------
+%%% Page layout
+%%%------------------------------------------------------------------------
+
+% These lines will insert git revision info in the footer, using the vc
+% package---see docs for vc package for details. Comment out this line
+% if you're not using vc, and also remove the \input{vc} line above.
+\pagestyle{kjh}
+%\thispagestyle{kjhgit}
+
+
+%%%------------------------------------------------------------------------
+%%% Address and contact block
+%%%------------------------------------------------------------------------
+\begin{minipage}[t]{2.65in}
+ \flushright {\footnotesize 
+ \href{https://www.liberty.edu/residential/health-sciences/}{Department of Health Sciences}, \\ 1971 University Blvd,\\ Liberty University, \\ \vspace{-0.05in} Lynchburg, \textsc{VA} 24515}  
+  
+\end{minipage}
+\hfill     
+%\begin{minipage}[t]{0.0in}
+% dummy (needed here)
+%\end{minipage}
+\hfill
+\begin{minipage}[t]{1.5in}
+\flushright \footnotesize
+  {\scriptsize \texttt{\href{http://twitter.com/jpPabl0}{\mytwitter}} \, \faTwitter }  \\ 
+  {\scriptsize \texttt{\href{mailto:\myemail}{\myemail}} \, \faEnvelope} \\
+  {\scriptsize \texttt{\href{http:github.com/jpmonteagudo28}{\mygithub}} \, \faGithub} \\
+  {\scriptsize \texttt{\href{\myweb}{\myweb}} \, \faGlobe}
+\end{minipage}
+
+\medskip
+
+%% Name 
+\noindent{\normalsize\textbf{\scheader \textsc{JP MONTEAGUDO}}}
+\reversemarginpar
+
+\bigskip       
+
+
+%% Appointments
+% \medskip
+
+\marginhead{\sffamily \normalsize summary}
+
+\noindent Seasoned professional with 5 years experience and strong mixed–methods research training, seeking an Epidemiologist role. 
+
+\bigskip
+%% Education
+
+\marginhead{\sffamily \normalsize{{\vskip -0.23em} education}}
+
+%\noindent\emph{Princeton University \vspace{0.01in}}
+
+\ind MPH, Epidemiology, Liberty University, 2023–.
+
+\ind Cert., Biostatistics, Institute for Statistics, 2023. 
+
+%\medskip
+%\noindent\emph{National University of Ireland (Cork)\vspace{0.02in}}
+
+\ind B.S., Psychology, Liberty University, 2020.
+
+\medskip
+
+%% Presentations
+\marginhead{\sffamily {\vskip 0.5em} \normalsize related \newline skills}
+\medskip
+
+\ind Biostatistics
+
+\ind Epidemiological research methods
+
+\ind Pathophysiology of disease
+
+\ind Statistical software packages (R, SPSS, Excel)
+
+\ind Program development
+
+\ind Regulatory Compliance
+
+%\end{revnumerate}
+
+\bigskip
+
+\marginhead{\sffamily \normalsize work \newline experience}
+
+
+\ind \textbf{Learning \& Dev. Specialist, Liberty University, 2018–2020, 2022–.}   
+%% creating itemize list for job description
+\vspace{.5em}
+\setlist[itemize]{nosep, before=\small}
+\begin{itemize}
+    \item \textcolor{red}{\textbf{\normalsize 1}}. Enhanced employee retention by \emph{8\%} through the introduction of a new training program, leading to a considerable \emph{7\% increase} in job satisfaction.
+    \item \textcolor{red}{\textbf{\normalsize 2}}. Developed and implemented statistical analysis plans to optimize evaluation of the current training program and impact on performance.
+\end{itemize}
+\medskip
+
+\ind \textbf{Freelance Program Evaluator, Align Education LLC, 2022–.}
+\vspace{.5em}
+\setlist[itemize]{nosep, before=\small}
+\begin{itemize}
+\item \textcolor{red}{\textbf{\normalsize 1}}. Conducted program evaluations for \href{https://www.iccpgc.org/}{Ivy Community Charities} using mixed–methods research to assess program effectiveness and inform strategic decision planning. 
+\item \textcolor{red}{\textbf{\normalsize 2}}. Conducted comprehensive analysis of strategic plans and program outcomes, producing comparative reports for after-school initiatives.
+\end{itemize}
+\medskip
+
+\ind \textbf{Quantitative Researcher, Liberty University, 2021–2022.}
+\vspace{.5em}
+\setlist[itemize]{nosep, before=\small}
+\begin{itemize}
+\item \textcolor{red}{\textbf{\normalsize 1}}. Designed intervention programs aimed at addressing issues related to aggression and self-efficacy.
+\item \textcolor{red}{\textbf{\normalsize 2}}. Conducted in–depth, semi–structured interviews to inform the development and pretesting of surveys focused on loneliness and social status.
+\end{itemize}
+\medskip
+
+\ind \textbf{Account Receivable Specialist, Liberty University, 2018–2019, 2021.}
+\vspace{.5em}
+\setlist[itemize]{nosep, before=\small}
+\begin{itemize}
+\item \textcolor{red}{\textbf{\normalsize 1}}. Administered a portfolio of 12,000 accounts, ensuring accurate handling of over \$3 billion in transactions. 
+\item \textcolor{red}{\textbf{\normalsize 2}}. Achieved \emph{100\% customer satisfaction} rate and \emph{zero escalations} by consistently delivering high–quality service.
+\end{itemize}
+\medskip
+
+\ind \textbf{School Certifying Official, Liberty University, 2017–2018.}
+\vspace{.5em}
+\setlist[itemize]{nosep, before=\small}
+\begin{itemize}
+\item \textcolor{red}{\textbf{\normalsize 1}}. Served as a liaison between the university and the U.S. Department of Veterans Affairs, providing expert guidance on available benefits and resolving issues to support veterans' academic success.
+\end{itemize}
+\bigskip
+
+
+ 
+%% Publications
+\marginhead{\sffamily \normalsize{\vskip 0.35em} projects}
+\medskip
+\noindent\emph{Contributions \vspace{0.02in}}
+
+\ind  Blake Fraser, Jessica Eason, Abigail Taber, Rachel Goodall, Elizabeth Moffitt, Hayden Goff, and Brian Kelley. 2021. “An Analysis of Loneliness and Contributing Factors Among College Students.”\emph{Liberty University's Scholar's Crossing}. \vspace{0.05in}
+
+\vspace{-0.075in}
+
+\normalsize
+
+\bigskip
+\noindent\emph{Analyses \& Write-ups \vspace{0.05in}}
+ 
+%% Use revnumerate environment if numbered publications are needed. 
+%% (Include it above in the preamble).
+%% \renewcommand{\labelenumi}{\textsc{a}\theenumi.}
+%% \begin{revnumerate}
+\ind Forthcoming. JP Monteagudo. “An assessment of Student Financial Services New Hire onboarding program's impact on retention and job performance.” \emph{Liberty University}. 
+
+\ind Forthcoming. JP Monteagudo. “Training time and Rate of Pursuit (TRooPs)— an interactive Shiny app to calculate GI Bill pay rates for students at Liberty University.” \emph{Liberty University}.
+
+\ind JP Monteagudo. 2024. ``\href{https://jpmonteagudo.com/blog}{The use of beta regression to determine the range of improvement for patients with m-TBI receiving visual therapy.}” Personal website.
+
+\ind JP Monteagudo. 2024. ``\href{https://jpmonteagudo.com/blog}{Investigating COVID-19 case fatality rate (CFR) in Chile - a case study in quantile beta regression.}.'' Personal website.
+
+\ind JP Monteagudo. 2023. ``Identifying bottlenecks to Financial Check-in in the Fall of 2022 within the Student Financial Services Operations team.'' \emph{Liberty University}. 
+
+\ind JP Monteagudo and Anane Olatunji. 2022. ``Data Governance and Management Policies for the Ivy Community Charities.'' \emph{Align Education, LLC}.
+
+\ind JP Monteagudo and Anane Olatunji. 2022. ``Ivy Community Charities' Comparative Program Report across four major U.S cities.'' \emph{Align Education, LLC}.
+
+
+%\end{revnumerate}
+
+ \medskip
+
+\end{document}
